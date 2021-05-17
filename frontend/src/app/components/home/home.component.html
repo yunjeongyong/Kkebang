@@ -1,0 +1,12 @@
+<div class="main">
+
+    <h4>Step1. 사진 불러오기</h4><br>
+
+    <div class="load-image-btn">
+        <label><input type="file" accept="image/*" #fileInput (change)="onFileChange(fileInput.files)" style="display: none;"></label>
+        <button mat-flat-button (click)="fileInput.click()">파일 선택 및 업로드</button>
+        <br><br>
+        <span>{{ msg }}</span>
+    </div>
+
+</div>

@@ -1,0 +1,17 @@
+.canvas {
+    border: 1px solid black;
+    max-width: 100%;
+}
+
+.canvas-section {
+    width: 100%;
+    text-align: center;
+}
+
+#canvas-img {
+    display: none;
+}
+
+.mask-canvas {
+    display: none;
+}
