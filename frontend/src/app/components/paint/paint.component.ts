@@ -142,13 +142,20 @@ export class PaintComponent implements OnInit {
       return;
     }
 
-    localStorage.setItem('masked', result.image);
+    // localStorage.setItem('masked', result.image);
+    localStorage.setItem('result', result.result);
     console.log(result);
+    this.router.navigate(['/result']);
   }
 
   onInputChange($event: any) {
     this.context.lineWidth = $event.value;
     this.maskContext.lineWidth = $event.value;
+  }
+
+  eraseAll() {
+    this.src = localStorage.getItem('image');
+    this.ngAfterViewInit();
   }
 
 }

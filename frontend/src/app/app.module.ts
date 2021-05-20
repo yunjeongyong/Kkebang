@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatIconModule } from '@angular/material/icon';
 
 import { TitleService } from './services/title.service';
 import { TimeService } from './services/time.service';
@@ -18,11 +19,13 @@ import { HomeComponent } from './components/home/home.component';
 import { NoPageComponent } from './components/no-page/no-page.component';
 import { CanvasComponent } from './components/canvas/canvas.component';
 import { PaintComponent } from './components/paint/paint.component';
+import { ResultComponent } from './components/result/result.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'canvas', component: CanvasComponent },
   { path: 'paint', component: PaintComponent },
+  { path: 'result', component: ResultComponent },
   { path: 'no-page', component: NoPageComponent },
   { path: '**', component: NoPageComponent }
 ];
@@ -33,7 +36,8 @@ const appRoutes: Routes = [
     HomeComponent,
     NoPageComponent,
     CanvasComponent,
-    PaintComponent
+    PaintComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,8 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatSliderModule
+    MatSliderModule,
+    MatIconModule
   ],
   providers: [
     TitleService,

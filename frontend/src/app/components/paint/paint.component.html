@@ -2,6 +2,10 @@
 
 <div class="canvas-section">
     <mat-slider min="1" max="40" step="1" value="20" (input)="onInputChange($event)"></mat-slider> <span>{{ context?.lineWidth }}</span>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <button mat-mini-fab (click)="eraseAll()">
+        <mat-icon>refresh</mat-icon>
+    </button>
     <br>
     <canvas class="canvas" #canvas></canvas>
     <canvas class="mask-canvas" #mask_canvas></canvas>

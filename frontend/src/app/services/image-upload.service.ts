@@ -27,6 +27,7 @@ export class ImageUploadService {
 
 interface ImageUploadReturnType {
   success: boolean,
-  image?: string,
+  image?: string, // masked image
+  result?: string,
   error?: string
 }
