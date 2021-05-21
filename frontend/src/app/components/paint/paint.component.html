@@ -1,17 +1,27 @@
 <img id="canvas-img" #img>
 
 <div class="canvas-section">
-    <mat-slider min="1" max="40" step="1" value="20" (input)="onInputChange($event)"></mat-slider> <span>{{ context?.lineWidth }}</span>
-    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <button mat-mini-fab (click)="eraseAll()">
-        <mat-icon>refresh</mat-icon>
-    </button>
+    <table class="tool-table">
+        <tr>
+            <td>
+                <mat-slider min="1" max="40" step="1" value="20" (input)="onInputChange($event)"></mat-slider> <span>{{ context?.lineWidth }}</span>
+            </td>
+            <td>
+                <button mat-mini-fab (click)="eraseAll()">
+                    <mat-icon>refresh</mat-icon>
+                </button>
+            </td>
+            <td>
+                <button mat-mini-fab (click)="sendMaskedImage()">
+                    <mat-icon>check_circle</mat-icon>
+                </button>
+            </td>
+        </tr>
+    </table>
     <br>
     <canvas class="canvas" #canvas></canvas>
     <canvas class="mask-canvas" #mask_canvas></canvas>
     <br>
     <pre>{{ imageInfo }}</pre>
-    <br>
-    <button (click)="sendMaskedImage()">click</button>
 </div>
 
