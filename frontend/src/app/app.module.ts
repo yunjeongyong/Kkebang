@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { TitleService } from './services/title.service';
 import { TimeService } from './services/time.service';
@@ -18,7 +20,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NoPageComponent } from './components/no-page/no-page.component';
 import { CanvasComponent } from './components/canvas/canvas.component';
-import { PaintComponent } from './components/paint/paint.component';
+import { LoadingDialog, PaintComponent } from './components/paint/paint.component';
 import { ResultComponent } from './components/result/result.component';
 
 const appRoutes: Routes = [
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
     NoPageComponent,
     CanvasComponent,
     PaintComponent,
-    ResultComponent
+    ResultComponent,
+    LoadingDialog
   ],
   imports: [
     BrowserModule,
@@ -52,12 +55,17 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatButtonModule,
     MatSliderModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     TitleService,
     TimeService,
     ImageUploadService
+  ],
+  exports: [
+    LoadingDialog
   ],
   bootstrap: [
     AppComponent

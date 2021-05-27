@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { fromEvent } from 'rxjs';
 import { pairwise, switchMap, takeUntil } from 'rxjs/operators';
@@ -24,7 +25,8 @@ export class PaintComponent implements OnInit {
   constructor(
     private router: Router,
     private timeService: TimeService,
-    private imageUploadService: ImageUploadService
+    private imageUploadService: ImageUploadService,
+    private dialog: MatDialog
   ) { }
 
   async ngOnInit() {
@@ -135,16 +137,22 @@ export class PaintComponent implements OnInit {
     const image = this.canvasToImage(this.canvas.nativeElement);
     const mask = this.canvasToImage(this.maskCanvas.nativeElement);
     const filename = this.src.substring(this.src.lastIndexOf('/') + 1);
+
+    const dialogRef = this.dialog.open(LoadingDialog, {
+      width: '150px',
+    });
+
     const result = await this.imageUploadService.uploadMasked(image, mask, filename).toPromise();
+
+    dialogRef.close();
 
     if ( !result.success ) {
       alert('error occured:\n' + result.error);
       return;
     }
 
-    // localStorage.setItem('masked', result.image);
     localStorage.setItem('result', result.result);
-    console.log(result);
+    // console.log(result);
     this.router.navigate(['/result']);
   }
 
@@ -156,6 +164,22 @@ export class PaintComponent implements OnInit {
   eraseAll() {
     this.src = localStorage.getItem('image');
     this.ngAfterViewInit();
+  }
+
+}
+
+@Component({
+  selector: 'dialog-paint',
+  templateUrl: './paint.component.dialog.html',
+})
+export class LoadingDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<LoadingDialog>
+  ) {}
+
+  onClose(): void {
+    this.dialogRef.close();
   }
 
 }

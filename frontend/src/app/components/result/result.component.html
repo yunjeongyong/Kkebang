@@ -1,7 +1,10 @@
 <img id="canvas-img" #img>
 
 <div class="canvas-section">
-    <!-- <button mat-button>back</button> -->
     <img [src]="imageSrc" style="border: 1px solid black;">
+    <br><br>
+    <a mat-icon-button [href]="imageSrc" download>
+        <mat-icon>save_alt</mat-icon>
+    </a>
 </div>
 
